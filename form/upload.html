@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Upload Gambar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #preview {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Upload Skin</h2>
+    <form id="uploadForm">
+        <div class="mb-3">
+            <label for="imageLink" class="form-label">Masukkan Link Gambar</label>
+            <input type="text" class="form-control" id="imageLink" placeholder="Masukkan URL gambar" required>
+        </div>
+        <div id="imagePreviewContainer" class="text-center">
+            <!-- Preview image akan ditampilkan di sini -->
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Deskripsi</label>
+            <textarea class="form-control" id="description" rows="3" placeholder="Tambahkan deskripsi gambar" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="downloadLink" class="form-label">Link Download</label>
+            <input type="text" class="form-control" id="downloadLink" placeholder="Masukkan link untuk download" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Kirim</button>
+    </form>
+</div>
+
+<script>
+    const imageLinkInput = document.getElementById('imageLink');
+    const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+    const uploadForm = document.getElementById('uploadForm');
+
+    // Menampilkan preview gambar saat link dimasukkan
+    imageLinkInput.addEventListener('input', function() {
+        const imageUrl = imageLinkInput.value;
+        if (imageUrl) {
+            imagePreviewContainer.innerHTML = `<img id="preview" src="${imageUrl}" alt="Preview Gambar">`;
+        } else {
+            imagePreviewContainer.innerHTML = '';
+        }
+    });
+
+    // Submit form
+    uploadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const imageUrl = imageLinkInput.value;
+        const description = document.getElementById('description').value;
+        const downloadLink = document.getElementById('downloadLink').value;
+
+        if (!imageUrl || !description || !downloadLink) {
+            alert('Semua field harus diisi!');
+            return;
+        }
+
+        alert('Upload berhasil!');
+        // Setelah berhasil, Anda dapat melakukan redirect atau reset form jika diinginkan
+        uploadForm.reset();
+        imagePreviewContainer.innerHTML = ''; // Menghapus preview
+    });
+</script>
+
+</body>
+</html>
