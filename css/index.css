@@ -11,7 +11,7 @@
     color: white !important;
 }
 body {
-    background: url('/docs/assets/bg.jpg') no-repeat center center fixed;
+    background: url('docs/assets/bg.jpg') no-repeat center center fixed;
     background-size: cover; /* Foto memenuhi layar */
     color: white; /* Warna teks default */
 }
